@@ -1,5 +1,5 @@
 <template>
-  <Layout :class="prefixCls">
+  <!-- <Layout :class="prefixCls">
     <LayoutFeatures />
     <LayoutHeader fixed v-if="getShowFullHeaderRef" />
     <Layout :class="[layoutClass]">
@@ -10,7 +10,8 @@
         <LayoutFooter />
       </Layout>
     </Layout>
-  </Layout>
+  </Layout> -->
+  <LayoutContent />
 </template>
 
 <script lang="ts">
