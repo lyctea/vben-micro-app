@@ -1,6 +1,5 @@
 import { defHttp } from '/@/utils/http/axios'
-// GetUserInfoModel 移除
-import { LoginParams, LoginResultModel } from './model/userModel'
+import { LoginParams, LoginResultModel, GetUserInfoModel } from './model/userModel'
 
 import { ErrorMessageMode } from '/#/axios'
 
@@ -31,8 +30,10 @@ export function loginApi(params: LoginParams, mode: ErrorMessageMode = 'modal') 
  * @description: getUserInfo
  */
 export function getUserInfo() {
-  return window.$wujie?.props?.userInfo
-  // return defHttp.get<GetUserInfoModel>({ url: Api.GetUserInfo }, { errorMessageMode: 'none' })
+  if (window.__POWERED_BY_WUJIE__) {
+    return window.$wujie?.props?.userInfo
+  }
+  return defHttp.get<GetUserInfoModel>({ url: Api.GetUserInfo }, { errorMessageMode: 'none' })
 }
 
 export function getPermCode() {
