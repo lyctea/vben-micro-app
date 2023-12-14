@@ -41,10 +41,12 @@ export const useUserStore = defineStore({
   }),
   getters: {
     getUserInfo(): UserInfo {
-      return this.userInfo || getAuthCache<UserInfo>(USER_INFO_KEY) || {}
+      // return this.userInfo || getAuthCache<UserInfo>(USER_INFO_KEY) || {}
+      return window.$wujie?.props?.userInfo
     },
     getToken(): string {
-      return this.token || getAuthCache<string>(TOKEN_KEY)
+      // return this.token || getAuthCache<string>(TOKEN_KEY)
+      return window.$wujie?.props?.token
     },
     getRoleList(): RoleEnum[] {
       return this.roleList.length > 0 ? this.roleList : getAuthCache<RoleEnum[]>(ROLES_KEY)
