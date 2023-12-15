@@ -1,5 +1,5 @@
 <template>
-  <!-- <Layout :class="prefixCls">
+  <Layout :class="prefixCls" v-if="!isMicroApp">
     <LayoutFeatures />
     <LayoutHeader fixed v-if="getShowFullHeaderRef" />
     <Layout :class="[layoutClass]">
@@ -10,8 +10,8 @@
         <LayoutFooter />
       </Layout>
     </Layout>
-  </Layout> -->
-  <LayoutContent />
+  </Layout>
+  <LayoutContent v-else />
 </template>
 
 <script lang="ts">
@@ -55,6 +55,10 @@
         return cls
       })
 
+      const isMicroApp = computed(() => {
+        return window.__POWERED_BY_WUJIE__
+      })
+
       return {
         getShowFullHeaderRef,
         getShowSidebar,
@@ -62,6 +66,7 @@
         getIsMobile,
         getIsMixSidebar,
         layoutClass,
+        isMicroApp,
       }
     },
   })
